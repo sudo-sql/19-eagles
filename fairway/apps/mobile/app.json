@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Fairway",
+    "slug": "fairway-golf",
+    "scheme": "fairway",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.fairway.golf",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Fairway uses your location during rounds to show distances to the green and hazards.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Optional background location keeps shot-tracking accurate while your phone is pocketed between shots.",
+        "UIBackgroundModes": ["location"]
+      },
+      "usesAppleSignIn": true
+    },
+    "android": {
+      "package": "com.fairway.golf",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "FOREGROUND_SERVICE_LOCATION"]
+    },
+    "plugins": ["expo-router", "expo-location", "expo-sqlite", "@sentry/react-native/expo"],
+    "experiments": { "typedRoutes": true }
+  }
+}

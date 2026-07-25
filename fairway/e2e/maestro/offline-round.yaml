@@ -1,0 +1,18 @@
+# Mobile critical path (Fix #15, #16): sign in → start round → score 18 holes
+# OFFLINE → sync. Run: maestro test e2e/maestro/offline-round.yaml
+appId: com.fairway.golf
+---
+- launchApp
+- assertVisible: "Fairway"
+# Two taps to first tee (Fix #1)
+- tapOn:
+    text: "Play .*|Start a round"
+- tapOn: "Start round"           # tap 2 — course prefetches for offline
+- setAirplaneMode: enabled        # entire round offline
+- repeat:
+    times: 18
+    commands:
+      - assertVisible: "Hole .*"
+      - tapOn: "Next hole"        # steppers pre-filled to par (Fix #7)
+- setAirplaneMode: disabled       # queue drains, LWW per hole
+- assertVisible: "Round synced"

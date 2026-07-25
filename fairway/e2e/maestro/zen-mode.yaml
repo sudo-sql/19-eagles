@@ -1,0 +1,10 @@
+# Zen mode (Fix #13): no score-to-par visible during the round.
+appId: com.fairway.golf
+---
+- launchApp
+- tapOn:
+    text: "Play .*|Start a round"
+- tapOn: "Zen mode"
+- tapOn: "Start round"
+- assertNotVisible: "[+-][0-9]+|E"   # running total hidden
+- tapOn: "Next hole"
